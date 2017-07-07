@@ -1,0 +1,24 @@
+- platform: darksky
+  api_key: !secret darksky_api
+  update_interval: '00:30'
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+    - wind_speed
+    - cloud_cover
+    - humidity
+    - pressure
+    - temperature_max
+    - temperature_min
+    - hourly_summary
+    - daily_summary
+    - precip_intensity_max
+
+- platform: yahoo_finance
+  symbols:
+    - SLV

@@ -1,0 +1,79 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 122
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret home_timezone
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  # api_password: PASSWORD
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  platform: google
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts:
+     - 192.168.1.65/85 #KR
+    interval_seconds: 45
+    consider_home: 1000
+    exclude:
+     - 192.168.1.75
+
+camera:
+  - platform: generic
+    name: Kingsway
+    still_image_url: http://trafficcams.vancouver.ca/cameraimages/KingswayWest_Earles.jpg
+  - platform: generic
+    name: Cambie Bridge
+    still_image_url: http://trafficcams.vancouver.ca/cameraimages/SmitheEast_ExpoBlvd.jpg
+  - platform: generic
+    name: Robson
+    still_image_url: http://trafficcams.vancouver.ca/cameraimages/RobsonWest_Hornby.jpg
+  - platform: generic
+    name: 7th
+    still_image_url: http://trafficcams.vancouver.ca/cameraimages/MainSouth_Kingsway-07th.jpg
+
+group: !include groups.yaml
+automation: !include automations.yaml
+sensor: !include sensors.yaml
+#scenes: !include scenes.yaml
+#weblink: !include weblinks.yaml

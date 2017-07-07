@@ -1,0 +1,113 @@
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - device_tracker.keaghan
+    - device_tracker.nichole
+    - device_tracker.living_room_tv
+    - group.main_light_control
+    - switch.bedroom_fan
+    - media_player.homeosaur
+    - media_player.living_room_un55ks8000
+    - media_player.tv_un55ks8000
+
+#View for gan controls
+fan_view:
+  name: Fans
+  view: yes
+  icon: mdi:fan
+  entities:
+    - group.group_fans
+
+#View for living room
+living_room_view:
+  name: Living Room
+  view: yes
+  entities:
+    - light.hue_go
+    - group.living_room_lamps
+
+traffic_view:
+  name: Traffic
+  view: yes
+  icon: mdi:car
+  entities:
+    - group.traffic_camera_feeds
+
+weather_view:
+  name: Weather
+  view: yes
+  icon: mdi:weather-partlycloudy
+  entities:
+    - group.weather
+
+
+traffic_camera_feeds:
+  name: Traffic Cameras
+  entities:
+    - camera.kingsway
+    - camera.7th
+    - camera.cambie_bridge
+    - camera.robson
+
+commute_time:
+  name: Commute Time to Work
+  entities:
+    - sensor.travel_time_to_work
+
+weather:
+  name: Weather
+  entities:
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_cloud_cover
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_wind_speed
+
+
+device_locations:
+  name: Device Locations
+  entities:
+    - device_tracker.keaghan
+
+# Main control for lights
+main_light_control:
+  name: Lights
+  entities:
+    - group.living_room_lamps
+    - group.kitchen_overhead_lights
+    - group.all_lights
+
+#Group for Fans
+group_fans:
+  name: Fans
+  entities:
+    - switch.gaming_room_fan
+    - switch.bedroom_fan
+
+#Living room lamps
+living_room_lamps:
+  name: Living Room Lamps
+  entities:
+    - light.living_room_lamp_corner
+    - light.living_room_lamp_tv
+
+#Kitchen counter lights
+kitchen_overhead_lights:
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_left
+    - light.kitchen_right
+
+#All lights
+all_lights:
+  name: Lights
+  entities:
+    - light.lightstrip
+    - light.living_room_lamp_tv
+    - light.living_room_lamp_corner
+    - light.kitchen_left
+    - light.kitchen_right
+    - light.hue_go
+    - light.gaming_room_lamp
