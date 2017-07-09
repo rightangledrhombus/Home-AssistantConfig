@@ -6,10 +6,12 @@ default_view:
     - device_tracker.nichole
     - device_tracker.living_room_tv
     - group.main_light_control
+    - group.harmony
     - switch.bedroom_fan
     - media_player.homeosaur
     - media_player.living_room_un55ks8000
     - media_player.tv_un55ks8000
+    - input_boolean.goodnight
 
 #View for gan controls
 fan_view:
@@ -20,9 +22,10 @@ fan_view:
     - group.group_fans
 
 #View for living room
-living_room_view:
-  name: Living Room
+lights_view:
+  name: Lights
   view: yes
+  icon: mdi:ceiling-light
   entities:
     - light.hue_go
     - group.living_room_lamps
@@ -40,6 +43,12 @@ weather_view:
   icon: mdi:weather-partlycloudy
   entities:
     - group.weather
+
+harmony:
+  name: Harmony
+  entities:
+    - sensor.current_activity
+    - input_select.harmony
 
 
 traffic_camera_feeds:

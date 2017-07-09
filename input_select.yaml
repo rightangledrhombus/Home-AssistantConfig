@@ -1,0 +1,9 @@
+harmony:
+  name: Harmony Control
+  options:
+    - Select Input
+    - Watch TV
+    - Watch Plex
+    - Watch Chromecast
+    - Power Off
+  icon: mdi:television-classic

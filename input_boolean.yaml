@@ -1,0 +1,4 @@
+goodnight:
+  name: Good Night
+  initial: off
+  icon: mdi:weather-night

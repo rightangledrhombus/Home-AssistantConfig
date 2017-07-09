@@ -1,6 +1,6 @@
 - platform: darksky
   api_key: !secret darksky_api
-  update_interval: '00:30'
+  update_interval: '00:15'
   monitored_conditions:
     - summary
     - icon
@@ -22,3 +22,9 @@
 - platform: yahoo_finance
   symbols:
     - SLV
+
+- platform: template
+  sensors:
+    current_activity:
+      friendly_name: 'Current Activity'
+      value_template: '{{ states.remote.living_room.attributes.current_activity }}'

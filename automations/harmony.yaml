@@ -1,0 +1,18 @@
+#####################################################
+#
+#  Ends Harmony activity based on remote input_select selection
+#
+#####################################################
+- alias: Harmony Activity End
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    to: 'Power Off'
+  action:
+    - service: remote.turn_off
+      entity_id: remote.living_room
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Activity"
