@@ -10,11 +10,13 @@
     - service: tts.google_say
       data:
         entity_id: media_player.homeosaur
-        message: "Make sure Mohave is tucked in!"
+        message: "Good night, Mr. Monkey. ooo ooo ooo."
     - service: switch.turn_on
       entity_id: switch.bedroom_fan
     - service: light.turn_off
       entity_id: group.all_lights
+    - service: remote.turn_off
+      entity_id: remote.living_room
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight
 

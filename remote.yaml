@@ -1,4 +1,4 @@
 - platform: harmony
   name: Living Room
-  host: 192.168.1.81
+  host: 192.168.1.70
   activity: Watch TV

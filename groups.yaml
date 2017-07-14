@@ -2,15 +2,12 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - device_tracker.keaghan
-    - device_tracker.nichole
-    - device_tracker.living_room_tv
+    - device_tracker.user1
+    - device_tracker.user2
     - group.main_light_control
     - group.harmony
     - switch.bedroom_fan
     - media_player.homeosaur
-    - media_player.living_room_un55ks8000
-    - media_player.tv_un55ks8000
     - input_boolean.goodnight
 
 #View for gan controls
@@ -29,6 +26,7 @@ lights_view:
   entities:
     - light.hue_go
     - group.living_room_lamps
+    - group.kitchen_overhead_lights
 
 traffic_view:
   name: Traffic

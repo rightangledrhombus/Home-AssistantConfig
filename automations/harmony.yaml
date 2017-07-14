@@ -1,3 +1,32 @@
+#
+#  Starts Harmony activity based on remote input_select selection
+#
+#####################################################
+- alias: Harmony Activity Start
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    from: 'Select Activity'
+  action:
+    - service: remote.turn_on
+      entity_id: remote.living_room
+      data_template:
+        activity: >
+          {% if is_state("input_select.harmony", "TV") %}
+            27149487
+          {% elif is_state("input_select.harmony", "Plex") %}
+            27181889
+          {% elif is_state("input_select.harmony", "Chromecast") %}
+            27149648
+          {% elif is_state("input_select.harmony", "Listen to Music") %}
+            27149561
+          {% else %}
+          {% endif %}
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Activity"
 #####################################################
 #
 #  Ends Harmony activity based on remote input_select selection
