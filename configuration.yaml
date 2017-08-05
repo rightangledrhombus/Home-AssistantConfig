@@ -82,12 +82,17 @@ camera:
     name: 7th
     still_image_url: http://trafficcams.vancouver.ca/cameraimages/MainSouth_Kingsway-07th.jpg
 
+zwave:
+  usb_path: /dev/ttyACM0
+  new_entity_ids: true
+
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
 sensor: !include sensors.yaml
 remote: !include remote.yaml
 input_select: !include input_select.yaml
 script: !include_dir_merge_list scripts
+#python_script: !include_dir_merge_list python_scripts
 input_boolean: !include input_boolean.yaml
 #scenes: !include scenes.yaml
 #weblink: !include weblinks.yaml

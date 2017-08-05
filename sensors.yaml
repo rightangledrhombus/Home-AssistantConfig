@@ -28,3 +28,21 @@
     current_activity:
       friendly_name: 'Current Activity'
       value_template: '{{ states.remote.living_room.attributes.current_activity }}'
+
+- platform: template
+  sensors:
+    door:
+      friendly_name: 'door'
+      value_template: >-
+        {% if is_state("binary_sensor.zw089_recessed_door_sensor_gen5_sensor", "0") %}
+        off
+        {% elif is_state("binary_sensor.zw089_recessed_door_sensor_gen5_sensor", "255") %}
+        on
+        {% endif %}
+
+# binary_sensor:
+#   - platform: template
+#       door_binary:
+#         movement:
+#           value_template: "{{ state.sensor_door.state == 'on'}}"
+#           sensor_class: opening

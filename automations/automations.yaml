@@ -10,7 +10,7 @@
     - service: tts.google_say
       data:
         entity_id: media_player.homeosaur
-        message: "Good night, Mr. Monkey. ooo ooo ooo."
+        message: 'Nighty Night.'
     - service: switch.turn_on
       entity_id: switch.bedroom_fan
     - service: light.turn_off
@@ -19,6 +19,31 @@
       entity_id: remote.living_room
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight
+
+#Guest bathroom door sensor - turn on
+- id: id_guestBathroomDoorLight
+  alias: 'Guest Bathroom Light Sensor'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
+      from: 'on'
+      to: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.gaming_room_lamp
+
+#Guest bathroom door sensor - turn off
+- id: id_guestBathroomDoorLight
+  alias: 'Guest Bathroom Light Sensor'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
+      from: 'off'
+      to: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.gaming_room_lamp
+
 
 #Turn off the bedroom fan in the morning
 - id: id_turnOffBedroomFan

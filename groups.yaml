@@ -9,6 +9,8 @@ default_view:
     - switch.bedroom_fan
     - media_player.homeosaur
     - input_boolean.goodnight
+    - sensor.door
+    - binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
 
 #View for gan controls
 fan_view:
@@ -97,7 +99,6 @@ group_fans:
 living_room_lamps:
   name: Living Room Lamps
   entities:
-    - light.living_room_lamp_corner
     - light.living_room_lamp_tv
 
 #Kitchen counter lights
@@ -113,7 +114,6 @@ all_lights:
   entities:
     - light.lightstrip
     - light.living_room_lamp_tv
-    - light.living_room_lamp_corner
     - light.kitchen_left
     - light.kitchen_right
     - light.hue_go
