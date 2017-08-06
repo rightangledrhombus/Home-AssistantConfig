@@ -31,14 +31,16 @@
 
 - platform: template
   sensors:
-    door:
-      friendly_name: 'door'
+    guest_bathroom_door:
+      friendly_name: 'Guest Bathroom Door'
       value_template: >-
-        {% if is_state("binary_sensor.zw089_recessed_door_sensor_gen5_sensor", "0") %}
-        off
-        {% elif is_state("binary_sensor.zw089_recessed_door_sensor_gen5_sensor", "255") %}
-        on
+        {% if is_state("binary_sensor.guest_bathroom_door_sensor", "on") %}
+        Open
+        {% elif is_state("binary_sensor.guest_bathroom_door_sensor", "off") %}
+        Closed
         {% endif %}
+      icon_template: '{% if is_state("binary_sensor.guest_bathroom_door_sensor", "on") %}mdi:account-off{% else %}mdi:account{% endif %}'
+
 
 # binary_sensor:
 #   - platform: template

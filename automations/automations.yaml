@@ -1,3 +1,6 @@
+##################################################
+# Home Modes
+##################################################
 #Good Night from google home
 - id: id_goodnight
   alias: 'Activate Good Night'
@@ -20,31 +23,67 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight
 
-#Guest bathroom door sensor - turn on
-- id: id_guestBathroomDoorLight
-  alias: 'Guest Bathroom Light Sensor'
+##################################################
+# Bathroom door
+##################################################
+# #Guest bathroom door sensor - turn on
+# - id: id_guestBathroomDoorLight
+#   alias: 'Guest Bathroom Light Sensor'
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.guest_bathroom_door
+#       from: 'Open'
+#       to: 'Closed'
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.gaming_room_lamp
+#
+# #Guest bathroom door sensor - turn off
+# - id: id_guestBathroomDoorLight
+#   alias: 'Guest Bathroom Light Sensor'
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.guest_bathroom_door
+#       from: 'Closed'
+#       to: 'Open'
+#   action:
+#     - service: light.turn_off
+#       entity_id: light.gaming_room_lamp
+
+##################################################
+# Flux
+##################################################
+- id: id_flux
+  alias: 'Flux'
   trigger:
-    - platform: state
-      entity_id: binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
-      from: 'on'
-      to: 'off'
+    platform: state
+    entity_id: sensor.guest_bathroom_door
+    from: 'Open'
+    to: 'Closed'
   action:
-    - service: light.turn_on
-      entity_id: light.gaming_room_lamp
+    - service: python_script.dimmer
+      data_template:
+        entity_id: light.guest_bathroom
+        action: dim_up
+        level: 50
 
-#Guest bathroom door sensor - turn off
-- id: id_guestBathroomDoorLight
-  alias: 'Guest Bathroom Light Sensor'
+- id: id_flux
+  alias: 'Flux'
   trigger:
-    - platform: state
-      entity_id: binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
-      from: 'off'
-      to: 'on'
+    platform: state
+    entity_id: sensor.guest_bathroom_door
+    from: 'Closed'
+    to: 'Open'
   action:
-    - service: light.turn_off
-      entity_id: light.gaming_room_lamp
+    - service: python_script.dimmer
+      data_template:
+        entity_id: light.guest_bathroom
+        action: dim_down
+        level: 50
 
-
+##################################################
+# Fans
+##################################################
 #Turn off the bedroom fan in the morning
 - id: id_turnOffBedroomFan
   alias: 'Turn off Bedroom Fan in the Morning'
@@ -63,6 +102,33 @@
     - service: switch.turn_off
       entity_id: switch.bedroom_fan
 
+#Turn off gaming room fan
+- id: id_turnOffGamingFan
+  alias: 'Turn off Gaming Room Fan'
+  trigger:
+    - platform: time
+      after: '08:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.gaming_room_fan
+
+#Turn on gaming room fan at night
+- id: id_turnOnGamingFan
+  alias: 'Turn on Gaming Room Fan'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.dark_sky_temperature
+      below: 18
+  condition:
+    condition: time
+    after: '20:00:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.gaming_room_fan
+
+##################################################
+# Lights
+##################################################
 #Turn off all lights on weekday mornings
 - id: id_turnOffAllLightsInMorning
   alias: 'Turn off Lights in Morning'
@@ -81,30 +147,10 @@
     - service: light.turn_off
       entity_id: group.all_lights
 
-#Turn off gaming room fan
-- id: id_turnOffGamingFan
-  alias: 'Turn off Gaming Room Fan'
-  trigger:
-    - platform: time
-      after: '06:00:00'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.gaming_room_fan
 
-#Turn on gaming room fan
-- id: id_turnOnGamingFan
-  alias: 'Turn on Gaming Room Fan'
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.dark_sky_temperature
-      below: 20
-  condition:
-    condition: time
-    after: '20:00:00'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.gaming_room_fan
-
+##################################################
+# Google Home
+##################################################
 #Set Google Home to Night Voice
 - id: id_setGoogleHomeNightVoice
   alias: Set Google Home to Night Voice
@@ -115,7 +161,7 @@
     - service: media_player.volume_set
       entity_id: media_player.homeosaur
       data:
-        volume_level: 0.35
+        volume_level: 0.25
 
 #Set Google Home to Day Voice
 - id: id_setGoogleHomeDayVoice

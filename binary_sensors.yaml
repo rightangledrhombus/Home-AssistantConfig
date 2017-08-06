@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    guest_bathroom_door:
+      value_template: "{{ states.sensor.guest_bathroom_door.state }}"
+      friendly_name: 'Guest Bathrom Door'

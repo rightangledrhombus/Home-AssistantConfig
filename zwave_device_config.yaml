@@ -1,3 +1,4 @@
-binary_sensor.zw089_recessed_door_sensor_gen5_sensor:
+binary_sensor.guest_bathroom_door_sensor:
   ignored: false
-  polling_intensity: 1
+  friendly_name: "Guest Bathroom Door"
+  polling_intensity:

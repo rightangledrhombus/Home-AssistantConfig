@@ -5,12 +5,10 @@ default_view:
     - device_tracker.user1
     - device_tracker.user2
     - group.main_light_control
-    - group.harmony
     - switch.bedroom_fan
     - media_player.homeosaur
-    - input_boolean.goodnight
-    - sensor.door
-    - binary_sensor.aeotec_zw089_recessed_door_sensor_gen5_sensor
+    - group.house_modes
+    - group.doors
 
 #View for gan controls
 fan_view:
@@ -27,8 +25,16 @@ lights_view:
   icon: mdi:ceiling-light
   entities:
     - light.hue_go
+    - light.guest_bathroom
     - group.living_room_lamps
     - group.kitchen_overhead_lights
+
+tv_view:
+  name: TV
+  view: yes
+  icon: mdi:television-classic
+  entities:
+    - group.harmony
 
 traffic_view:
   name: Traffic
@@ -44,8 +50,18 @@ weather_view:
   entities:
     - group.weather
 
+house_modes:
+  name: House Modes
+  entities:
+    - input_boolean.goodnight
+
+doors:
+  name: Door Status
+  entities:
+    - sensor.guest_bathroom_door
+
 harmony:
-  name: Harmony
+  name: Living Room TV
   entities:
     - sensor.current_activity
     - input_select.harmony
