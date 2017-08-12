@@ -175,3 +175,18 @@
       entity_id: media_player.homeosaur
       data:
         volume_level: 0.45
+
+##################################################
+# Frontend Automations
+##################################################
+# Set the frontend theme on startup
+- id: id_setFrontendThemeOnStartup
+  alias: 'Set theme at startup'
+  initial_state: 'on'
+  trigger:
+   - platform: homeassistant
+     event: start
+  action:
+    service: frontend.set_theme
+    data:
+      name: cyan_green

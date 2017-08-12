@@ -14,7 +14,15 @@ homeassistant:
   customize: !include customize.yaml
 # Enables the frontend
 frontend:
-
+  themes:
+    green:
+      primary-color: "#2beb09"
+    cyan_green:
+      primary-color: "#04e3cd"
+    magenta:
+      primary-color: "#f70aff"
+    purple:
+      primary-color: "#911a8f"
 # Enables configuration UI
 config:
 
