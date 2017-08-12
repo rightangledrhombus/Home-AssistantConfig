@@ -50,9 +50,33 @@ conversation:
 
 # Enables support for tracking state changes over time.
 history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - light
+    entities:
+      - input_boolean.goodnight
+      - group.kitchen_overhead_lights
+  exclude:
+    entities:
+      - light.kitchen_left
+      - light.kitchen_right
 
 # View all events in a logbook
 logbook:
+    include:
+      domains:
+        - sensor
+        - switch
+        - light
+      entities:
+        - input_boolean.goodnight
+        - group.kitchen_overhead_lights
+    exclude:
+      entities:
+        - light.kitchen_left
+        - light.kitchen_right
 
 # Track the sun
 sun:
