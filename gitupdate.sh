@@ -1,12 +1,13 @@
 cd /home/homeassistant/.homeassistant
-source /srv/homeassistant/homeassistant_venv/bin/activate
-hass --script check_config
+#source /srv/homeassistant/homeassistant_venv/bin/activate
+#hass --script check_config
 
-git add ./
-git status
-echo -n "Enter the Description for the Change: " [Minor Update]
-read CHANGE_MSG
-git commit -m "${CHANGE_MSG}"
-git push origin master
+sudo git add ./
+sudo git status
+#sudo echo -n "Enter the Description for the Change: "
+#read CHANGE_MSG
+read -p 'Enter the Description for the Change: ' CHANGE_MSG
+sudo git commit -m "${CHANGE_MSG}"
+sudo git push origin master
 
-exit
+#exit

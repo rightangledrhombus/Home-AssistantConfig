@@ -9,6 +9,7 @@ default_view:
     - media_player.homeosaur
     - group.house_modes
     - group.doors
+    - light.guest_bathroom
 
 #View for gan controls
 fan_view:
@@ -134,3 +135,4 @@ all_lights:
     - light.kitchen_right
     - light.hue_go
     - light.gaming_room_lamp
+    - light.guest_bathroom
