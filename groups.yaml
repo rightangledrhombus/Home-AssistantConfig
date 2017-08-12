@@ -2,8 +2,6 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - device_tracker.user1
-    - device_tracker.user2
     - group.main_light_control
     - switch.bedroom_fan
     - media_player.homeosaur
@@ -25,10 +23,8 @@ lights_view:
   view: yes
   icon: mdi:ceiling-light
   entities:
-    - light.hue_go
-    - light.guest_bathroom
     - group.living_room_lamps
-    - group.kitchen_overhead_lights
+    - group.misc_lights
 
 tv_view:
   name: TV
@@ -91,7 +87,7 @@ weather:
     - sensor.dark_sky_precip_probability
     - sensor.dark_sky_wind_speed
 
-
+# Device tracker
 device_locations:
   name: Device Locations
   entities:
@@ -103,7 +99,7 @@ main_light_control:
   entities:
     - group.living_room_lamps
     - group.kitchen_overhead_lights
-    - group.all_lights
+    - light.lightstrip
 
 #Group for Fans
 group_fans:
@@ -124,6 +120,15 @@ kitchen_overhead_lights:
   entities:
     - light.kitchen_left
     - light.kitchen_right
+
+# Miscellaneous light group
+misc_lights:
+  name: Other Lights
+  entities:
+    - group.kitchen_overhead_lights
+    - light.lightstrip
+    - light.guest_bathroom
+    - light.hue_go
 
 #All lights
 all_lights:

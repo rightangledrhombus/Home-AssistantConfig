@@ -1,6 +1,6 @@
 #cd /home/homeassistant/.homeassistant
-#source /srv/homeassistant/homeassistant/bin/activate
-#hass --script check_config
+source /srv/homeassistant/bin/activate
+hass --script check_config -c /home/homeassistant/.homeassistant/
 
 sudo git add ./
 sudo git status
