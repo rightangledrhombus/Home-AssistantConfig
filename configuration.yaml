@@ -23,6 +23,9 @@ frontend:
       primary-color: "#f70aff"
     purple:
       primary-color: "#911a8f"
+    cyan:
+      primary-color: "#05cceb"
+
 # Enables configuration UI
 config:
 

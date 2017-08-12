@@ -148,6 +148,23 @@
     - service: light.turn_off
       entity_id: group.all_lights
 
+# Turn on lightstrip 30 min before sunset - only if sweet dreams mode not on
+- id: id_turnOnLightstripAtSunset
+  alias: 'Turn on lightstrip at sunset'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: ''-00:30:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.goodnight
+    state: 'off'
+  action:
+    service: light.turn_on
+    entity_id: light.lightstrip
+    data:
+      transistion: 300 #5 min transistion time
+
 
 ##################################################
 # Google Home
@@ -189,4 +206,4 @@
   action:
     service: frontend.set_theme
     data:
-      name: cyan_green
+      name: cyan
