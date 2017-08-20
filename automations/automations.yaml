@@ -128,9 +128,9 @@
       entity_id: switch.gaming_room_fan
 
 ##################################################
-# Lights
+# Light off
 ##################################################
-# Turn off all lights on weekday mornings
+# Turn off all lights on weekday mornings - weekdays
 - id: id_turnOffAllLightsInMorning
   alias: 'Turn off Lights in Morning'
   trigger:
@@ -148,17 +148,45 @@
     - service: light.turn_off
       entity_id: group.all_lights
 
-# Turn on lightstrip 30 min before sunset - only if sweet dreams mode not on
+# Turn off all lights in the morning - based on sun angle
+- id: id_turnOffAllLightsInMorningEveryday
+  alias: 'Turn off Lights in Morning Everyday'
+  trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 2
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+
+##################################################
+# Light on
+##################################################
+# Turn on lightstrip sunset - only if sweet dreams mode not on
 - id: id_turnOnLightstripAtSunset
   alias: 'Turn on lightstrip at sunset'
   trigger:
-    platform: sun
-    event: sunset
-    offset: '-00:30:00'
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: 1
   condition:
     condition: state
     entity_id: input_boolean.goodnight
     state: 'off'
+  action:
+    service: light.turn_on
+    entity_id: light.lightstrip
+    data:
+      transistion: 300 #5 min transistion time
+
+# Turn on lightstrip in the morning
+- id: id_turnOnLightstripInMorning
+  alias: 'Turn on lightstrip in the morning'
+  trigger:
+    - platform: time
+      at: '05:30:00'
   action:
     service: light.turn_on
     entity_id: light.lightstrip
@@ -206,4 +234,4 @@
   action:
     service: frontend.set_theme
     data:
-      name: cyan
+      name: purple
