@@ -28,59 +28,59 @@
 # Bathroom door
 ##################################################
 # #Guest bathroom door sensor - turn on
-# - id: id_guestBathroomDoorLight
-#   alias: 'Guest Bathroom Light Sensor'
-#   trigger:
-#     - platform: state
-#       entity_id: sensor.guest_bathroom_door
-#       from: 'Open'
-#       to: 'Closed'
-#   action:
-#     - service: light.turn_on
-#       entity_id: light.guest_bathroom
-#
-# #Guest bathroom door sensor - turn off
-# - id: id_guestBathroomDoorLight
-#   alias: 'Guest Bathroom Light Sensor'
-#   trigger:
-#     - platform: state
-#       entity_id: sensor.guest_bathroom_door
-#       from: 'Closed'
-#       to: 'Open'
-#   action:
-#     - service: light.turn_off
-#       entity_id: light.guest_bathroom
+- id: id_guestBathroomDoorLight
+  alias: 'Guest Bathroom Light Sensor'
+  trigger:
+    - platform: state
+      entity_id: sensor.guest_bathroom_door
+      from: 'Open'
+      to: 'Closed'
+  action:
+    - service: light.turn_on
+      entity_id: light.guest_bathroom
+
+#Guest bathroom door sensor - turn off
+- id: id_guestBathroomDoorLight
+  alias: 'Guest Bathroom Light Sensor'
+  trigger:
+    - platform: state
+      entity_id: sensor.guest_bathroom_door
+      from: 'Closed'
+      to: 'Open'
+  action:
+    - service: light.turn_off
+      entity_id: light.guest_bathroom
 
 ##################################################
 # Flux
 ##################################################
-- id: id_flux
-  alias: 'Flux'
-  trigger:
-    platform: state
-    entity_id: sensor.guest_bathroom_door
-    from: 'Open'
-    to: 'Closed'
-  action:
-    - service: python_script.dimmer
-      data_template:
-        entity_id: light.guest_bathroom
-        action: dim_up
-        level: 50
-
-- id: id_flux
-  alias: 'Flux'
-  trigger:
-    platform: state
-    entity_id: sensor.guest_bathroom_door
-    from: 'Closed'
-    to: 'Open'
-  action:
-    - service: python_script.dimmer
-      data_template:
-        entity_id: light.guest_bathroom
-        action: dim_down
-        level: 50
+# - id: id_flux
+#   alias: 'Flux'
+#   trigger:
+#     platform: state
+#     entity_id: sensor.guest_bathroom_door
+#     from: 'Open'
+#     to: 'Closed'
+#   action:
+#     - service: python_script.dimmer
+#       data_template:
+#         entity_id: light.guest_bathroom
+#         action: dim_up
+#         level: 50
+#
+# - id: id_flux
+#   alias: 'Flux'
+#   trigger:
+#     platform: state
+#     entity_id: sensor.guest_bathroom_door
+#     from: 'Closed'
+#     to: 'Open'
+#   action:
+#     - service: python_script.dimmer
+#       data_template:
+#         entity_id: light.guest_bathroom
+#         action: dim_down
+#         level: 50
 
 ##################################################
 # Fans
@@ -170,7 +170,7 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: 1
+    below: 2.5
   condition:
     condition: state
     entity_id: input_boolean.goodnight

@@ -7,8 +7,8 @@
 messageNum = int(data.get('randomNum')) # Get random number from HASS.
 
 # Array of good night messages.
-messageArray = ["Good night Mr. Monkey!", "Night night.", "Bed time!", "mmmmmm... cozy blankets.", "I'll lock up.",
-                "Sleepy times activiated.", "I'll stand guard.", "Make sure the stuffs are tucked in!",
+messageArray = ["Good night Mr. Monkey!", "Night night.", "Bed time!", "I love cozy blankets.", "I'll go ahead and lock up.",
+                "Sleepy times activated.", "I'll stand guard.", "Make sure the stuffs are tucked in!",
                 "Who programmed this? It's awesome.", "Mohave, make sure Chick is tucked in!"]
 
 # Play random good night message.
