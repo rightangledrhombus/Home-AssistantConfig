@@ -107,6 +107,11 @@ camera:
     name: 7th
     still_image_url: http://trafficcams.vancouver.ca/cameraimages/MainSouth_Kingsway-07th.jpg
 
+notify:
+  - platform: pushbullet
+    name: dino
+    api_key: !secret pushbullet_api
+
 zwave:
   usb_path: /dev/ttyACM0
   new_entity_ids: true
