@@ -46,3 +46,10 @@ weather_view:
   icon: mdi:weather-partlycloudy
   entities:
     - group.weather
+
+testing_view:
+  name: Testing View
+  view: yes
+  icon: mdi:test-tube
+  entities:
+    - input_boolean.testing

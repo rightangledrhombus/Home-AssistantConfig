@@ -155,7 +155,7 @@
       platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
-      above: 2
+      above: 7.5
   action:
     - service: light.turn_off
       entity_id: group.all_lights
@@ -170,7 +170,7 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: 2.5
+    below: 10
   condition:
     condition: state
     entity_id: input_boolean.goodnight
@@ -179,7 +179,8 @@
     service: light.turn_on
     entity_id: light.lightstrip
     data:
-      transistion: 300 #5 min transistion time
+      brightness_pct: 25
+
 
 # Turn on lightstrip in the morning
 - id: id_turnOnLightstripInMorning
@@ -191,7 +192,7 @@
     service: light.turn_on
     entity_id: light.lightstrip
     data:
-      transistion: 300 #5 min transistion time
+      brightness_pct: 25
 
 
 ##################################################
@@ -235,3 +236,19 @@
     service: frontend.set_theme
     data:
       name: purple
+
+##################################################
+# Testing
+##################################################
+- id: id_testingBoolean
+  alias: 'Testing Boolean'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.testing
+      from: 'off'
+      to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.lightstrip
+    data:
+      brightness_pct: 25

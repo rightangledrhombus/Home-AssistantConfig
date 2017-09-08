@@ -2,3 +2,8 @@ goodnight:
   name: Good Night
   initial: off
   icon: mdi:weather-night
+
+testing:
+  name: Test Boolean
+  initial: off
+  icon: mdi:test-tube
