@@ -155,7 +155,7 @@
       platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
-      above: 7.5
+      above: 18
   action:
     - service: light.turn_off
       entity_id: group.all_lights
@@ -170,7 +170,7 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: 10
+    below: 15
   condition:
     condition: state
     entity_id: input_boolean.goodnight
