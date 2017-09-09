@@ -248,7 +248,6 @@
       from: 'off'
       to: 'on'
   action:
-    service: light.turn_on
-    entity_id: light.lightstrip
-    data:
-      brightness_pct: 25
+    - service: python_script.record_raptors_game
+      data_template:
+        input_string: TSN1 3:00
