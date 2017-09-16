@@ -125,5 +125,5 @@ input_select: !include input_select.yaml
 #script: !include_dir_merge_list scripts
 python_script: !include_dir_merge_list python_scripts
 input_boolean: !include input_boolean.yaml
-#scenes: !include scenes.yaml
+scene: !include scenes.yaml
 #weblink: !include weblinks.yaml

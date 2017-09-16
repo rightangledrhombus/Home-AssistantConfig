@@ -1,0 +1,9 @@
+- name: Morning
+  entities:
+    light.lightstrip:
+      state: on
+      brightness_pct: 25
+    group.kitchen_overhead_lights:
+      state: on
+      brightness_pct: 5
+      kelvin: 2200
