@@ -135,7 +135,7 @@
   alias: 'Turn off Lights in Morning'
   trigger:
     - platform: time
-      at: '07:00:00'
+      at: '07:10:00'
   condition:
     - condition: time
       weekday:
@@ -201,8 +201,8 @@
       seconds: '00'
   condition:
     condition: time
-    after: '06:15:00'
-    before: '07:15:00'
+    after: '06:10:00'
+    before: '07:00:00'
   action:
     - service: python_script.sunrise_simulation
 

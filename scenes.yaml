@@ -7,3 +7,7 @@
       state: on
       brightness_pct: 5
       kelvin: 2200
+    light.living_room_lamp_tv:
+      state: on
+      brightness_pct: 5
+      kelvin: 2200
