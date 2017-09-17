@@ -192,6 +192,19 @@
     - service: scene.turn_on
       entity_id: scene.morning
 
+# Run sunrise simulation in the morning every 5 min
+- id: id_createSunrise
+  alias: 'Sunrise Simulation'
+  trigger:
+    - platform: time
+      minutes: '/5'
+      seconds: '00'
+  condition:
+    condition: time
+    after: '06:15:00'
+    before: '07:15:00'
+  action:
+    - service: python_script.sunrise_simulation
 
 ##################################################
 # Google Home
@@ -246,8 +259,18 @@
       from: 'off'
       to: 'on'
   action:
-    - service: scene.turn_on
-      entity_id: scene.morning
+    - service: python_script.sunrise_simulation
+
+# - id: id_testingBoolean
+#   alias: 'Testing Boolean'
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.testing
+#       from: 'off'
+#       to: 'on'
+#   action:
+#     - service: scene.turn_on
+#       entity_id: scene.morning
 
 # - id: id_testingBoolean
 #   alias: 'Testing Boolean'
