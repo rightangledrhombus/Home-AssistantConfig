@@ -5,9 +5,13 @@
       brightness_pct: 25
     group.kitchen_overhead_lights:
       state: on
-      brightness_pct: 5
+      brightness_pct: 1
       kelvin: 2200
     light.living_room_lamp_tv:
+      state: on
+      brightness_pct: 7
+      kelvin: 2200
+    light.guest_bathroom:
       state: on
       brightness_pct: 5
       kelvin: 2200
