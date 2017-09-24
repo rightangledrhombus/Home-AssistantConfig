@@ -19,10 +19,6 @@
     - daily_summary
     - precip_intensity_max
 
-- platform: yahoo_finance
-  symbols:
-    - SLV
-
 - platform: template
   sensors:
     current_activity:

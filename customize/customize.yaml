@@ -1,0 +1,23 @@
+#Emulated_Hue devices
+input_boolean.goodnight:
+  emulated_hue: true
+  emulate_hue_name: "Sweet Dreams"
+  friendly_name: "Sweet Dreams"
+
+light.lightstrip:
+  icon: mdi:bridge
+
+light.bed_lamp_window:
+  friendly_name: "Bed Lamp - Window"
+
+light.bed_lamp_bathroom:
+  friendly_name: "Bed Lamp - Bathroom"
+
+group.living_room_lamps:
+  icon: mdi:lamp
+
+group.kitchen_overhead_lights:
+  icon: mdi:ceiling-light
+
+switch.holiday_lights:
+  icon: mdi:ornament

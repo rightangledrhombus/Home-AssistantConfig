@@ -14,14 +14,13 @@ harmony:
     - sensor.current_activity
     - input_select.harmony
 
-
 traffic_camera_feeds:
   name: Traffic Cameras
   entities:
-    - camera.kingsway
-    - camera.7th
-    - camera.cambie_bridge
-    - camera.robson
+    - !secret camera1_entity
+    - !secret camera4_entity
+    - !secret camera2_entity
+    - !secret camera3_entity
 
 commute_time:
   name: Commute Time to Work
@@ -38,12 +37,6 @@ weather:
     - sensor.dark_sky_precip_probability
     - sensor.dark_sky_wind_speed
 
-# Device tracker
-device_locations:
-  name: Device Locations
-  entities:
-    - device_tracker.keaghan
-
 # Main control for lights
 main_light_control:
   name: Lights
@@ -51,6 +44,8 @@ main_light_control:
     - group.living_room_lamps
     - group.kitchen_overhead_lights
     - light.lightstrip
+    - light.hue_go
+    - light.bed_lamp_bathroom
 
 #Group for Fans
 group_fans:
@@ -64,6 +59,7 @@ living_room_lamps:
   name: Living Room Lamps
   entities:
     - light.living_room_lamp_tv
+    - light.living_room_lamp_patio
 
 #Kitchen counter lights
 kitchen_overhead_lights:
@@ -78,8 +74,11 @@ misc_lights:
   entities:
     - group.kitchen_overhead_lights
     - light.lightstrip
-    - light.guest_bathroom
     - light.hue_go
+    - light.bed_lamp_window
+    - light.bed_lamp_bathroom
+    - light.gaming_room_lamp
+    - switch.holiday_lights
 
 #All lights
 all_lights:
@@ -87,8 +86,11 @@ all_lights:
   entities:
     - light.lightstrip
     - light.living_room_lamp_tv
+    - light.living_room_lamp_patio
+    - light.bed_lamp_bathroom
+    - light.bed_lamp_window
     - light.kitchen_left
     - light.kitchen_right
     - light.hue_go
-    - light.gaming_room_lamp
-    - light.guest_bathroom
+    - switch.holiday_lights
+

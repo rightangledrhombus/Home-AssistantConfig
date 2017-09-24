@@ -11,7 +11,5 @@
       state: on
       brightness_pct: 7
       kelvin: 2200
-    light.guest_bathroom:
+    switch.holiday_lights:
       state: on
-      brightness_pct: 5
-      kelvin: 2200

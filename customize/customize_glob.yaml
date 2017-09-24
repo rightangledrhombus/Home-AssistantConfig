@@ -1,0 +1,5 @@
+"light.*lamp*":
+  icon: mdi:lamp
+
+"switch.*fan*":
+  icon: mdi:fan

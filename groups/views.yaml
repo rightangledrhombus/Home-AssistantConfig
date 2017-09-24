@@ -3,11 +3,8 @@ default_view:
   icon: mdi:home
   entities:
     - group.main_light_control
-    - switch.bedroom_fan
     - media_player.homeosaur
     - group.house_modes
-    - group.doors
-    - light.guest_bathroom
 
 #View for gan controls
 fan_view:

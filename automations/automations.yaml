@@ -28,28 +28,28 @@
 # Bathroom door
 ##################################################
 # #Guest bathroom door sensor - turn on
-- id: id_guestBathroomDoorLight
-  alias: 'Guest Bathroom Light Sensor'
-  trigger:
-    - platform: state
-      entity_id: sensor.guest_bathroom_door
-      from: 'Open'
-      to: 'Closed'
-  action:
-    - service: light.turn_on
-      entity_id: light.guest_bathroom
-
-#Guest bathroom door sensor - turn off
-- id: id_guestBathroomDoorLight
-  alias: 'Guest Bathroom Light Sensor'
-  trigger:
-    - platform: state
-      entity_id: sensor.guest_bathroom_door
-      from: 'Closed'
-      to: 'Open'
-  action:
-    - service: light.turn_off
-      entity_id: light.guest_bathroom
+# - id: id_guestBathroomDoorLight
+#   alias: 'Guest Bathroom Light Sensor'
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.guest_bathroom_door
+#       from: 'Open'
+#       to: 'Closed'
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.guest_bathroom
+#
+# #Guest bathroom door sensor - turn off
+# - id: id_guestBathroomDoorLight
+#   alias: 'Guest Bathroom Light Sensor'
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.guest_bathroom_door
+#       from: 'Closed'
+#       to: 'Open'
+#   action:
+#     - service: light.turn_off
+#       entity_id: light.guest_bathroom
 
 ##################################################
 # Flux
@@ -135,7 +135,7 @@
   alias: 'Turn off Lights in Morning'
   trigger:
     - platform: time
-      at: '07:10:00'
+      at: '07:01:00'
   condition:
     - condition: time
       weekday:

@@ -11,7 +11,9 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret home_timezone
 
-  customize: !include customize.yaml
+  customize: !include customize/customize.yaml
+  customize_domain: !include customize/customize_domain.yaml
+  customize_glob: !include customize/customize_glob.yaml
 # Enables the frontend
 frontend:
   themes:
@@ -88,24 +90,22 @@ tts:
 emulated_hue:
   type: google_home
   host_ip: 192.168.1.75
-  expose_by_default: true
+  expose_by_default: false
   listen_port: 80
-  exposed_domains:
-    - light
 
 camera:
   - platform: generic
-    name: Kingsway
-    still_image_url: http://trafficcams.vancouver.ca/cameraimages/KingswayWest_Earles.jpg
+    name: !secret camera1_name
+    still_image_url: !secret camera1_url
   - platform: generic
-    name: Cambie Bridge
-    still_image_url: http://trafficcams.vancouver.ca/cameraimages/SmitheEast_ExpoBlvd.jpg
+    name: !secret camera2_name
+    still_image_url: !secret camera2_url
   - platform: generic
-    name: Robson
-    still_image_url: http://trafficcams.vancouver.ca/cameraimages/RobsonWest_Hornby.jpg
+    name: !secret camera3_name
+    still_image_url: !secret camera3_url
   - platform: generic
-    name: 7th
-    still_image_url: http://trafficcams.vancouver.ca/cameraimages/MainSouth_Kingsway-07th.jpg
+    name: !secret camera4_name
+    still_image_url: !secret camera4_url
 
 notify:
   - platform: pushbullet
@@ -122,8 +122,7 @@ sensor: !include sensors.yaml
 binary_sensor: !include binary_sensors.yaml
 remote: !include remote.yaml
 input_select: !include input_select.yaml
-#script: !include_dir_merge_list scripts
+switch: !include switches.yaml
 python_script: !include_dir_merge_list python_scripts
 input_boolean: !include input_boolean.yaml
 scene: !include scenes.yaml
-#weblink: !include weblinks.yaml
