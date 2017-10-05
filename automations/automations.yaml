@@ -92,13 +92,9 @@
     - platform: time
       at: '06:50:00'
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+    - condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.bedroom_fan
@@ -106,6 +102,7 @@
 # Turn off gaming room fan
 - id: id_turnOffGamingFan
   alias: 'Turn off Gaming Room Fan'
+  initial_state: 'off'
   trigger:
     - platform: time
       at: '06:00:00'
@@ -116,6 +113,7 @@
 # Turn on gaming room fan at night
 - id: id_turnOnGamingFan
   alias: 'Turn on Gaming Room Fan'
+  initial_state: 'off'
   trigger:
     - platform: numeric_state
       entity_id: sensor.dark_sky_temperature
@@ -137,16 +135,14 @@
     - platform: time
       at: '07:01:00'
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+    - condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.holiday_lights
 
 # Turn off all lights in the morning - based on sun angle
 - id: id_turnOffAllLightsInMorningEveryday
@@ -159,13 +155,15 @@
   action:
     - service: light.turn_off
       entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.holiday_lights
 
 ##################################################
 # Light on
 ##################################################
 # Turn on lightstrip sunset - only if sweet dreams mode not on
-- id: id_turnOnLightstripAtSunset
-  alias: 'Turn on lightstrip at sunset'
+- id: id_turnOnLightstripInEvening
+  alias: 'Turn the lightstring in the evening'
   trigger:
     platform: numeric_state
     entity_id: sun.sun
@@ -175,14 +173,60 @@
     - condition: state
       entity_id: input_boolean.goodnight
       state: 'off'
-    - condition: state
+  action:
+    - service: light.turn_on
       entity_id: light.lightstrip
+      data:
+        brightness_pct: 65
+    - service: switch.turn_on
+      entity_id: switch.holiday_lights
+
+- id: id_turnOnLightsInEvening
+  alias: 'Turn the lights in the evening'
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: 8
+  condition:
+    - condition: state
+      entity_id: input_boolean.goodnight
       state: 'off'
   action:
-    service: light.turn_on
-    entity_id: light.lightstrip
-    data:
-      brightness_pct: 25
+    - service: scene.turn_on
+      entity_id: scene.evening
+
+- id: id_turnOnHueGoInEvening
+  alias: 'Turn the Hue Go in the evening'
+  trigger:
+    - platform: time
+      at: '20:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.goodnight
+      state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.hue_go
+      data:
+        brightness_pct: 50
+        rgb_color: [229, 9, 9]
+
+- id: id_turnOnHueGoInMorning
+  alias: 'Turn the Hue Go in the morning'
+  trigger:
+    - platform: time
+      at: '06:20:00'
+  condition:
+    - condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.hue_go
+      data:
+        brightness_pct: 50
+        rgb_color: [229, 9, 9]
 
 
 # Turn on lightstrip in the morning
@@ -254,15 +298,15 @@
 ##################################################
 # Testing
 ##################################################
-- id: id_testingBoolean
-  alias: 'Testing Boolean'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.testing
-      from: 'off'
-      to: 'on'
-  action:
-    - service: python_script.sunrise_simulation
+# - id: id_testingBoolean
+#   alias: 'Testing Boolean'
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.testing
+#       from: 'off'
+#       to: 'on'
+#   action:
+#     - service: python_script.day_simulation
 
 # - id: id_testingBoolean
 #   alias: 'Testing Boolean'
@@ -273,16 +317,18 @@
 #       to: 'on'
 #   action:
 #     - service: scene.turn_on
-#       entity_id: scene.morning
+#       entity_id: scene.evening
 
-# - id: id_testingBoolean
-#   alias: 'Testing Boolean'
-#   trigger:
-#     - platform: state
-#       entity_id: input_boolean.testing
-#       from: 'off'
-#       to: 'on'
-#   action:
-#     - service: python_script.record_raptors_game
-#       data_template:
-#         input_string: TSN1 3:00
+- id: id_testingBoolean
+  alias: 'Testing Boolean'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.testing
+      from: 'off'
+      to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.hue_go
+      data:
+        rgb_color: [229, 9, 9]
+        brightness_pct: 50

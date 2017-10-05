@@ -45,7 +45,7 @@ main_light_control:
     - group.kitchen_overhead_lights
     - light.lightstrip
     - light.hue_go
-    - light.bed_lamp_bathroom
+    - !secret bed_lamp_right_entity
 
 #Group for Fans
 group_fans:
@@ -75,8 +75,8 @@ misc_lights:
     - group.kitchen_overhead_lights
     - light.lightstrip
     - light.hue_go
-    - light.bed_lamp_window
-    - light.bed_lamp_bathroom
+    - !secret bed_lamp_left_entity
+    - !secret bed_lamp_right_entity
     - light.gaming_room_lamp
     - switch.holiday_lights
 
@@ -87,10 +87,9 @@ all_lights:
     - light.lightstrip
     - light.living_room_lamp_tv
     - light.living_room_lamp_patio
-    - light.bed_lamp_bathroom
-    - light.bed_lamp_window
+    - !secret bed_lamp_left_entity
+    - !secret bed_lamp_right_entity
     - light.kitchen_left
     - light.kitchen_right
     - light.hue_go
     - switch.holiday_lights
-

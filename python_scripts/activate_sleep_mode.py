@@ -19,6 +19,10 @@ hass.services.call('tts', 'google_say', data)
 data = { "entity_id" : "switch.bedroom_fan" }
 hass.services.call('switch', 'turn_on', data)
 
+# Turn off holiday lights
+data = { "entity_id" : "switch.holiday_lights" }
+hass.services.call('switch', 'turn_off', data)
+
 # Turn off tv
 data = { "entity_id" : "remote.living_room" }
 hass.services.call('remote', 'turn_off', data)

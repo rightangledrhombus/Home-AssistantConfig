@@ -13,3 +13,14 @@
       kelvin: 2200
     switch.holiday_lights:
       state: on
+
+- name: Evening
+  entities:
+    group.kitchen_overhead_lights:
+      state: on
+      brightness_pct: 10
+      kelvin: 2400
+    light.living_room_lamp_tv:
+      state: on
+      brightness_pct: 30
+      kelvin: 2400

@@ -7,12 +7,6 @@ input_boolean.goodnight:
 light.lightstrip:
   icon: mdi:bridge
 
-light.bed_lamp_window:
-  friendly_name: "Bed Lamp - Window"
-
-light.bed_lamp_bathroom:
-  friendly_name: "Bed Lamp - Bathroom"
-
 group.living_room_lamps:
   icon: mdi:lamp
 

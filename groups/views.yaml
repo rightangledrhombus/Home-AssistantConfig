@@ -44,6 +44,14 @@ weather_view:
   entities:
     - group.weather
 
+automations_view:
+  name: Automations
+  view: yes
+  icon: mdi:timetable
+  entities:
+    - automation.turn_off_bedroom_fan_in_the_morning
+    
+
 testing_view:
   name: Testing View
   view: yes
