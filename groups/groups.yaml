@@ -92,4 +92,5 @@ all_lights:
     - light.kitchen_left
     - light.kitchen_right
     - light.hue_go
+    - light.gaming_room_lamp
     - switch.holiday_lights

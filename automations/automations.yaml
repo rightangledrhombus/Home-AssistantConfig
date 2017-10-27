@@ -187,7 +187,7 @@
     platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: 8
+    below: 6
   condition:
     - condition: state
       entity_id: input_boolean.goodnight
@@ -200,7 +200,7 @@
   alias: 'Turn the Hue Go in the evening'
   trigger:
     - platform: time
-      at: '20:00:00'
+      at: '17:30:00'
   condition:
     - condition: state
       entity_id: input_boolean.goodnight
@@ -208,9 +208,6 @@
   action:
     - service: light.turn_on
       entity_id: light.hue_go
-      data:
-        brightness_pct: 50
-        rgb_color: [229, 9, 9]
 
 - id: id_turnOnHueGoInMorning
   alias: 'Turn the Hue Go in the morning'
@@ -224,9 +221,6 @@
   action:
     - service: light.turn_on
       entity_id: light.hue_go
-      data:
-        brightness_pct: 50
-        rgb_color: [229, 9, 9]
 
 
 # Turn on lightstrip in the morning
@@ -234,7 +228,7 @@
   alias: 'Turn on lightstrip in the morning'
   trigger:
     - platform: time
-      at: '05:30:00'
+      at: '05:45:00'
   action:
     - service: scene.turn_on
       entity_id: scene.morning
@@ -247,9 +241,12 @@
       minutes: '/5'
       seconds: '00'
   condition:
-    condition: time
-    after: '06:10:00'
-    before: '07:00:00'
+    - condition: time
+      after: '06:10:00'
+      before: '07:00:00'
+    - condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
   action:
     - service: python_script.sunrise_simulation
 
