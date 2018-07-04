@@ -16,3 +16,5 @@ home-assistant\.log
 secrets\.yaml
 
 \.spotify-token-cache
+
+tts/
