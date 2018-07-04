@@ -1,0 +1,16 @@
+
+\.config_entries\.json
+
+\.HA_VERSION
+
+\.uuid
+
+entity_registry\.yaml
+
+harmony_living_room\.conf
+
+home-assistant_v2\.db
+
+home-assistant\.log
+
+secrets\.yaml
