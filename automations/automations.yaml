@@ -90,7 +90,7 @@
   alias: 'Turn off Bedroom Fan in the Morning'
   trigger:
     - platform: time
-      at: '06:50:00'
+      at: '06:35:00'
   condition:
     - condition: state
       entity_id: 'binary_sensor.workday_sensor'
@@ -133,7 +133,7 @@
   alias: 'Turn off Lights in Morning'
   trigger:
     - platform: time
-      at: '07:01:00'
+      at: '06:30:00'
   condition:
     - condition: state
       entity_id: 'binary_sensor.workday_sensor'
