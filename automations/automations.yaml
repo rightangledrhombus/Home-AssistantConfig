@@ -229,6 +229,11 @@
   trigger:
     - platform: time
       at: '05:45:00'
+  condition:
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: '{{ state.attributes.elevation }}'
+        below: 0
   action:
     - service: scene.turn_on
       entity_id: scene.morning
@@ -247,6 +252,10 @@
     - condition: state
       entity_id: 'binary_sensor.workday_sensor'
       state: 'on'
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 0
   action:
     - service: python_script.sunrise_simulation
 

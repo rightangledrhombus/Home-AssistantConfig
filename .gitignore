@@ -18,3 +18,5 @@ secrets\.yaml
 \.spotify-token-cache
 
 tts/
+
+\.vscode/
