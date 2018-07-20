@@ -20,3 +20,5 @@ secrets\.yaml
 tts/
 
 \.vscode/
+
+*.db-shm
